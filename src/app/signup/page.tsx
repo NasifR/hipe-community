@@ -99,7 +99,12 @@ export default function Signup() {
           />
         </div>
 
-        <button onClick={handleSignup}>Sign up</button>
+        <button
+          onClick={handleSignup}
+          className="mt-5 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-800 transition-all duration-300"
+          >
+            Sign up
+          </button>
       </div>
     </div>
   );
