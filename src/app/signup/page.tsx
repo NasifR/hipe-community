@@ -42,8 +42,8 @@ export default function Signup() {
       await setDoc(doc(db, "users", user.uid), {
         firstName: formData.firstName,
         lastName: formData.lastName,
-        organization: formData.organization,
         email: formData.email,
+        organization: formData.organization,
         createdAt: new Date(),
       });
 
@@ -55,33 +55,51 @@ export default function Signup() {
   };
 
   return (
-    <div>
-      <div>
-        <h1>Create an account</h1>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+      <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+        <h1 className="text-2xl font-semibold mb-6 text-center text-gray-900">
+          Create an account
+        </h1>
 
-        <div>
-          <input name="email" placeholder="Email" onChange={handleChange} />
+        <div className="space-y-4">
+          <input
+            name="email"
+            placeholder="Email"
+            onChange={handleChange}
+            type="email"
+            className="w-full px-4 py-2 border rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          />
           <input
             name="password"
             placeholder="Password"
             onChange={handleChange}
+            type="password"
+            className="w-full px-4 py-2 border rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
           <input
             name="firstName"
             placeholder="First Name"
             onChange={handleChange}
+            type="text"
+            className="w-full px-4 py-2 border rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
           <input
             name="lastName"
             placeholder="Last Name"
             onChange={handleChange}
+            type="text"
+            className="w-full px-4 py-2 border rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
           <input
             name="organization"
             placeholder="Organization"
             onChange={handleChange}
+            type="text"
+            className="w-full px-4 py-2 border rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
+
+        <button onClick={handleSignup}>Sign up</button>
       </div>
     </div>
   );
