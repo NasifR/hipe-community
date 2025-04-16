@@ -79,7 +79,7 @@ export default function Onboarding() {
         setUserId(user.uid);
         const userDoc = await getDoc(doc(db, 'users', user.uid));
         if (userDoc.exists() && userDoc.data().role) {
-          router.push('/dashboard'); // already onboarded
+          router.push('/'); // already onboarded
         }
       }
     });

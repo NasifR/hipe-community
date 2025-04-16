@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { auth, db } from "../../../lib/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
+import Link from "next/link";
 
 export default function Signup() {
   const router = useRouter();
@@ -50,7 +51,7 @@ export default function Signup() {
       router.push("/onboarding");
     } catch (error) {
       console.error(error);
-      alert("Signup failed. Please try again.");
+      alert("Signup failed. Error:" + error);
     }
   };
 
@@ -105,6 +106,14 @@ export default function Signup() {
           >
             Sign up
           </button>
+
+        <Link href="/login">
+          <button
+          className="mt-5 w-full bg-white text-blue-600 py-2 rounded-lg hover:bg-blue-800 hover:text-white border border-blue-600transition-all duration-300"
+          >
+            Have an account? Sign in
+          </button>
+          </Link>
       </div>
     </div>
   );
