@@ -5,6 +5,8 @@ import { auth, db } from "../../../lib/firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import Link from "next/link";
+import Image from "next/image";
+import logo from "../../../public/images/hipe.png"
 
 export default function Signup() {
   const router = useRouter();
@@ -58,6 +60,9 @@ export default function Signup() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+        <div className="flex justify-center items-center">
+          <Image src={logo} alt="Logo" width={150} height={150} />
+        </div>
         <h1 className="text-2xl font-semibold mb-6 text-center text-gray-900">
           Create an account
         </h1>
