@@ -48,6 +48,7 @@ export default function Signup() {
         email: formData.email,
         organization: formData.organization,
         createdAt: new Date(),
+        role: "",
       });
 
       router.push("/onboarding");

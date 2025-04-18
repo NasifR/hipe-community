@@ -3,8 +3,10 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { auth, db } from '../../../lib/firebaseConfig';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
-import { onAuthStateChanged } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import SelectableButtons from '@/components/SelectableButtons';
+
+
 
 type FormData = {
   role: string;
@@ -70,13 +72,13 @@ export default function Onboarding() {
 
   const [userId, setUserId] = useState('');
   const router = useRouter();
+  const user = auth.currentUser;
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (!user) {
         router.push('/signup');
       } else {
-        setUserId(user.uid);
         const userDoc = await getDoc(doc(db, 'users', user.uid));
         if (userDoc.exists() && userDoc.data().role) {
           router.push('/'); // already onboarded
@@ -95,15 +97,16 @@ export default function Onboarding() {
   };
 
   const handleSubmit = async () => {
-    if (!userId) return;
+    if (!user) return;
 
     try {
-      await updateDoc(doc(db, 'users', userId), {
+      await updateDoc(doc(db, 'users', user.uid), {
         ...formData,
+        role: formData.role,
         updatedAt: new Date(),
       });
 
-      router.push('/dashboard');
+      router.push('/');
     } catch (error) {
       console.error(error);
       alert('Failed to save onboarding data.');
