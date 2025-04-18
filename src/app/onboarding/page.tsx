@@ -174,7 +174,7 @@ export default function Onboarding() {
 
           <div>
             <div className='mb-2'>
-            <label className="font-medium">Interests</label>
+            <label className="font-medium text-gray-900">Interests</label>
             </div>
             <SelectableButtons
               options={interestOptions}
@@ -212,7 +212,7 @@ export default function Onboarding() {
 
           <div>
             <div className='mb-2'>
-            <label className="font-medium">
+            <label className="font-medium text-gray-900">
               Areas you are interested in supporting students with:
             </label>
             </div>
@@ -245,7 +245,7 @@ export default function Onboarding() {
         <>
           <div>
             <div className='mb-2'>
-            <label className="font-medium">Organization Type</label>
+            <label className="font-medium text-gray-900">Organization Type</label>
             </div>
             <SelectableButtons
               options={['NGO', 'Company', 'Government', 'Educational', 'Other']}
@@ -256,7 +256,7 @@ export default function Onboarding() {
 
           <div>
             <div className='mb-2'>
-            <label className="font-medium">Opportunities Offered</label>
+            <label className="font-medium text-gray-900">Opportunities Offered</label>
             </div>
             <SelectableButtons
               options={opportunityOptions}
@@ -268,7 +268,7 @@ export default function Onboarding() {
 
           <div>
             <div className='mb-2'>
-            <label className="font-medium">Target Audience</label>
+            <label className="font-medium text-gray-900">Target Audience</label>
             </div>
             <SelectableButtons
               options={audienceOptions}

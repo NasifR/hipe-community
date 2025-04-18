@@ -36,7 +36,7 @@ const SelectableButtons: React.FC<Props> = ({ options, selected, onSelect, multi
                         isSelected(option)
                             ? 'bg-blue-600 text-white'
                             : 'bg-white text-gray-800 border-gray-300'
-                    } hover:bg-blue-100`}
+                    } hover:bg-blue-300`}
                 >
                     {option}
                 </button>
