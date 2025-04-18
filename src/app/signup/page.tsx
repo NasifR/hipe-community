@@ -33,6 +33,14 @@ export default function Signup() {
   };
 
   const handleSignup = async () => {
+    // Validate form data
+    const { email, password, firstName, lastName, organization } = formData;
+    if (!email || !password || !firstName || !lastName || !organization) {
+      alert("Please fill in all fields.");
+    return;
+    }
+    //
+
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,

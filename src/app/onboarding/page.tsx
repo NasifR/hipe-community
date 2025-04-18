@@ -119,7 +119,9 @@ export default function Onboarding() {
 
       {/* Role selection */}
       <div>
+        <div className='mb-2'>
         <label className="font-medium">What best describes you?</label>
+        </div>
         <SelectableButtons
           options={['Student', 'Faculty/Staff', 'Organization']}
           selected={formData.role}
@@ -131,7 +133,9 @@ export default function Onboarding() {
       {formData.role === 'Student' && (
         <>
           <div>
+            <div className='mb-2'>
             <label className="font-medium">Academic Level</label>
+            </div>
             <SelectableButtons
               options={['Undergraduate', 'Graduate', 'High School']}
               selected={formData.academicLevel || ''}
@@ -168,7 +172,9 @@ export default function Onboarding() {
           />
 
           <div>
+            <div className='mb-2'>
             <label className="font-medium">Interests</label>
+            </div>
             <SelectableButtons
               options={interestOptions}
               selected={formData.interests || []}
@@ -204,9 +210,11 @@ export default function Onboarding() {
           />
 
           <div>
+            <div className='mb-2'>
             <label className="font-medium">
               Areas you are interested in supporting students with:
             </label>
+            </div>
             <SelectableButtons
               options={supportOptions}
               selected={formData.supportAreas || []}
@@ -235,7 +243,9 @@ export default function Onboarding() {
       {formData.role === 'Organization' && (
         <>
           <div>
+            <div className='mb-2'>
             <label className="font-medium">Organization Type</label>
+            </div>
             <SelectableButtons
               options={['NGO', 'Company', 'Government', 'Educational', 'Other']}
               selected={formData.organizationType || ''}
@@ -244,7 +254,9 @@ export default function Onboarding() {
           </div>
 
           <div>
+            <div className='mb-2'>
             <label className="font-medium">Opportunities Offered</label>
+            </div>
             <SelectableButtons
               options={opportunityOptions}
               selected={formData.opportunitiesOffered || []}
@@ -254,7 +266,9 @@ export default function Onboarding() {
           </div>
 
           <div>
+            <div className='mb-2'>
             <label className="font-medium">Target Audience</label>
+            </div>
             <SelectableButtons
               options={audienceOptions}
               selected={formData.targetAudience || ''}
