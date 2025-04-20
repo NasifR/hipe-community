@@ -43,9 +43,14 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/">
+                <Link href="/opportunities">
                   <p className="hover:text-blue-500 hover:bg-white transition-all py-1 px-1 rounded-sm">
-                    Home
+                    Opportunities
+                  </p>
+                </Link>
+                <Link href="/search">
+                  <p className="hover:text-blue-500 hover:bg-white transition-all py-1 px-1 rounded-sm">
+                    Search
                   </p>
                 </Link>
               </li>
