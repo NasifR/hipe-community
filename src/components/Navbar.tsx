@@ -35,6 +35,20 @@ const Navbar = () => {
                   </p>
                 </Link>
               </li>
+              <li>
+                <Link href="/resources">
+                  <p className="hover:text-blue-500 hover:bg-white transition-all py-1 px-1 rounded-sm">
+                    Resources
+                  </p>
+                </Link>
+              </li>
+              <li>
+                <Link href="/">
+                  <p className="hover:text-blue-500 hover:bg-white transition-all py-1 px-1 rounded-sm">
+                    Home
+                  </p>
+                </Link>
+              </li>
               
             </ul>
 
