@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { auth, db } from "../../../lib/firebaseConfig";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import Link from "next/link";
 import Image from "next/image";
@@ -59,6 +59,38 @@ export default function Signup() {
         role: "",
       });
 
+      router.push("/onboarding");
+    } catch (error) {
+      console.error(error);
+      alert("Signup failed. Error:" + error);
+    }
+  };
+
+  // google sign up
+
+  const handleGoogleSignup = async () => {
+    const provider = new GoogleAuthProvider();
+
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      // Prompt for organization
+    const organization = prompt("What organization are you from?");
+
+    if (!organization) {
+      alert("Organization is required to proceed.");
+      return;
+    }
+      const userRef = doc(db, "users", user.uid);
+      await setDoc(userRef, {
+        firstName: user.displayName?.split(" ")[0] || "",
+        lastname: user.displayName?.split(" ").slice(1).join(" ") || "",
+        email: user.email,
+        organization,
+        createdAt: new Date(),
+        role: "",
+      }, { merge: true});
       router.push("/onboarding");
     } catch (error) {
       console.error(error);
