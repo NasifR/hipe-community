@@ -76,12 +76,13 @@ export default function Signup() {
       const user = result.user;
 
       // Prompt for organization
-    const organization = prompt("What organization are you from?");
+      setTimeout(async () => {
+        const organization = prompt("What organization are you from?");
+        if (!organization) {
+          alert("Organization is required to proceed.");
+          return;
+        }
 
-    if (!organization) {
-      alert("Organization is required to proceed.");
-      return;
-    }
       const userRef = doc(db, "users", user.uid);
       await setDoc(userRef, {
         firstName: user.displayName?.split(" ")[0] || "",
@@ -92,6 +93,7 @@ export default function Signup() {
         role: "",
       }, { merge: true});
       router.push("/onboarding");
+    }, 500);
     } catch (error) {
       console.error(error);
       alert("Signup failed. Error:" + error);
@@ -152,6 +154,19 @@ export default function Signup() {
           >
             Sign up
           </button>
+
+        <button
+          onClick={handleGoogleSignup}
+          className="mt-3 w-full flex items-center justify-center gap-3 border border-gray-300 bg-white text-gray-700 py-2 rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-sm"
+        >
+          <Image
+            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+            alt="Google Logo"
+            width={20}
+            height={20}
+          />
+          <span>Sign up with Google</span>
+        </button>
 
         <Link href="/login">
           <button
