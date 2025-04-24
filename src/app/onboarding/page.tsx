@@ -5,6 +5,7 @@ import { auth, db } from '../../../lib/firebaseConfig';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import SelectableButtons from '@/components/SelectableButtons';
+import RequireEmailVerified from '@/components/RequireEmailVerified';
 
 
 
@@ -114,6 +115,7 @@ export default function Onboarding() {
   };
 
   return (
+    <RequireEmailVerified>
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
     <div className="max-w-2xl mx-auto p-6 space-y-6 bg-white rounded-lg shadow-lg mt-5 mb-5">
       <h1 className="text-2xl font-semibold text-gray-900">Let’s get to know you!</h1>
@@ -308,5 +310,6 @@ export default function Onboarding() {
       </button>
     </div>
     </div>
+    </RequireEmailVerified>
   );
 }
