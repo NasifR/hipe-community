@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { auth, db } from "../../../lib/firebaseConfig";
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, sendEmailVerification } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import Link from "next/link";
 import Image from "next/image";
@@ -58,6 +58,10 @@ export default function Signup() {
         createdAt: new Date(),
         role: "",
       });
+
+      await sendEmailVerification(user);
+
+      alert("A verification link was sent to your email. Please check your inbox.");
 
       router.push("/onboarding");
     } catch (error) {
