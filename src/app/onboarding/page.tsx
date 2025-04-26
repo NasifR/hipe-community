@@ -78,15 +78,24 @@ export default function Onboarding() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (!user) {
-        router.push('/signup');
+        router.push('/login'); // or /signup
+        return;
+      }
+  
+      await user.reload(); // refresh user object
+      if (!user.emailVerified) {
+        router.push('/verifyEmail');
+        return;
+      }
+  
+      const userDoc = await getDoc(doc(db, 'users', user.uid));
+      if (userDoc.exists() && userDoc.data().role) {
+        router.push('/'); // already onboarded
       } else {
-        const userDoc = await getDoc(doc(db, 'users', user.uid));
-        if (userDoc.exists() && userDoc.data().role) {
-          router.push('/'); // already onboarded
-        }
+        setUserId(user.uid); // proceed to fill form
       }
     });
-
+  
     return () => unsubscribe();
   }, [router]);
 
