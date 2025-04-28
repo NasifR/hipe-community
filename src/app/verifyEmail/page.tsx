@@ -23,7 +23,7 @@ export default function VerifyEmail() {
         }
       } else {
         setError("No user found. Please sign in again.");
-        router.push("/login"); // optional, in case session expired
+        router.push("/login"); // in case session expired
       }
     } catch (err) {
       console.error(err);
