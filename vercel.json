@@ -1,7 +1,6 @@
 {
-    "framework": "nextjs",
-    "buildCommand": "npm run build",
-    "outputDirectory": ".next",
-    "rootDirectory": "src"
+    "rewrites": [
+      { "source": "/(.*)", "destination": "/src/$1" }
+    ]
   }
   
