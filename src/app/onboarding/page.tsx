@@ -60,6 +60,7 @@ const audienceOptions = [
   'High School Students',
   'Undergraduates',
   'Graduates',
+  'Faculty',
   'All',
 ];
 
