@@ -135,7 +135,7 @@ export default function Onboarding() {
         <label className="font-medium text-gray-900">What best describes you?</label>
         </div>
         <SelectableButtons
-          options={['Student', 'Faculty/Staff', 'Organization']}
+          options={['Student', 'Faculty', 'Staff', 'Organization']}
           selected={formData.role}
           onSelect={(val) => updateField('role', val)}
         />
@@ -204,8 +204,8 @@ export default function Onboarding() {
         </>
       )}
 
-      {/* Faculty Fields */}
-      {formData.role === 'Faculty/Staff' && (
+      {/* Faculty/staff Fields */}
+      {(formData.role === 'Faculty' || formData.role === 'Staff') && (
         <>
           <input
             placeholder="Department"

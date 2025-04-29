@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, sendPasswordResetEmail } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { auth, db } from "../../../lib/firebaseConfig";
 import Link from "next/link";
@@ -76,6 +76,21 @@ export default function Login() {
     }
   };
 
+  const handleForgotPassword = async () => {
+    if (!formData.email) {
+      alert("Please enter your email address first.");
+      return;
+    }
+
+    try {
+      await sendPasswordResetEmail(auth, formData.email);
+      alert("Password reset email was sent to your email address. Please check inbox.");
+    } catch (error) {
+      console.error(error);
+      alert("Failed to send password reset email: " + error);
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 ">
       <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
@@ -109,6 +124,16 @@ export default function Login() {
         >
           Log in
         </button>
+
+        <div className="text-center text-sm mt-2">
+          <button 
+          onClick={handleForgotPassword}
+          className="text-blue-600 hover:underline"
+        >
+            Forgot password?
+          </button>
+        </div>
+
         <button
             onClick={handleGoogleLogin}
             className="mt-3 w-full flex items-center justify-center gap-3 bg-white text-gray-800 border border-gray-300 py-2 rounded-lg hover:bg-gray-100 transition-all duration-300"
