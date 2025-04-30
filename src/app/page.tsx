@@ -12,7 +12,18 @@ const page = () => {
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col items-center justify-center text-center px-4 bg-gray-50">
         <motion.div initial={{ opacity: 0, y: -30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
-          <Image src={logo} alt="HIPE Logo" width={120} height={120} />
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 1.2 }}>
+        <div className="flex items-center justify-center">
+        <Image
+            src={heroImage}
+            alt="Hero"
+            width={300}
+            height={300}
+          />
+        </div>
+
+          </motion.div>
+          
           <h1 className="text-5xl font-extrabold mt-4">Welcome to HIPE International</h1>
           <p className="text-lg mt-4 max-w-xl mx-auto">
             Your gateway to global education, experiences, and connections.
@@ -25,9 +36,6 @@ const page = () => {
               Learn More
             </Button>
           </div>
-        </motion.div>
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 1.2 }} className="mt-10">
-          <Image src={heroImage} alt="Hero" width={900} height={500} className="rounded-xl shadow-lg" />
         </motion.div>
       </section>
 
@@ -46,7 +54,7 @@ const page = () => {
         {/* Cards or grid of featured opportunities here */}
       </motion.section>
 
-      {/* Upcoming Events Section */}
+      {/* Events*/}
       <motion.section
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
