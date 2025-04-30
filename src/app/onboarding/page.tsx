@@ -6,6 +6,7 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import SelectableButtons from '@/components/SelectableButtons';
 import RequireEmailVerified from '@/components/RequireEmailVerified';
+import RichTextEditor from '@/components/RichTextEditor';
 
 
 
@@ -196,12 +197,12 @@ export default function Onboarding() {
             />
           </div>
 
-          <textarea
+            <RichTextEditor
+            value={formData.workExperiences || ""}
+            onChange={(value) => updateField('workExperiences', value)}
             placeholder="List your work/research/study abroad experiences"
-            value={formData.workExperiences || ''}
-            onChange={(e) => updateField('workExperiences', e.target.value)}
-            className="w-full px-4 py-2 border rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
+
         </>
       )}
 
