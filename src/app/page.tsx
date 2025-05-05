@@ -4,40 +4,58 @@ import Image from "next/image";
 import logo from "../../public/images/hipe.png";
 import heroImage from "../../public/images/hipe_int.png";
 import Button from "../components/Button";
+import globe from "../../public/images/hipe_globe.png";
 import { motion } from "framer-motion";
 
 const page = () => {
   return (
     <div className="bg-white text-black">
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col items-center justify-center text-center px-4 bg-gray-50">
-        <motion.div initial={{ opacity: 0, y: -30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 1.2 }}>
-        <div className="flex items-center justify-center">
+      <section className="min-h-screen flex flex-col md:flex-row items-center justify-center text-center md:text-left px-4 bg-gray-50">
+      {/* Left side (Text & Logo) */}
+      <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+        className="w-full md:w-1/2 flex flex-col ml-10 px-10 items-center md:items-start justify-center transform -translate-y-15"
+      >
         <Image
-            src={heroImage}
-            alt="Hero"
-            width={300}
-            height={300}
-          />
+          src={heroImage}
+          alt="Hero Logo"
+          width={200}
+          height={200}
+          className="mx-auto md:mx-0"
+        />
+        <h1 className="text-6xl font-extrabold mt-4">Welcome to HIPE International</h1>
+        <p className="text-2xl mt-4 max-w-md">
+          Your gateway to global education, experiences, and connections.
+        </p>
+        <div className="mt-6 flex gap-4 justify-center md:justify-start">
+          <Button className="bg-blue-600 hover:bg-blue-800 text-white px-6 py-3 rounded-xl">
+            Join the Community
+          </Button>
+          <Button variant="outline" className="px-6 py-3 rounded-xl border-blue-600">
+            Learn More
+          </Button>
         </div>
+      </motion.div>
 
-          </motion.div>
+      {/* Right side (Globe Image) */}
+      <motion.div
+        initial={{ opacity: 0, x: 30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1.2, delay: 0.2 }}
+        className="w-full md:w-1/2 flex justify-center mt-8 md:mt-0"
+      >
+        <Image
+          src={require("../../public/images/hipe_globe.png")}
+          alt="Globe"
+          width={600}
+          height={600}
           
-          <h1 className="text-5xl font-extrabold mt-4">Welcome to HIPE International</h1>
-          <p className="text-lg mt-4 max-w-xl mx-auto">
-            Your gateway to global education, experiences, and connections.
-          </p>
-          <div className="mt-6 flex gap-4 justify-center">
-            <Button className="bg-blue-600 hover:bg-blue-800 text-white px-6 py-3 rounded-xl">
-              Join the Community
-            </Button>
-            <Button variant="outline" className="px-6 py-3 rounded-xl border-blue-600">
-              Learn More
-            </Button>
-          </div>
-        </motion.div>
-      </section>
+        />
+      </motion.div>
+    </section>
 
       {/* Top Opportunities Section */}
       <motion.section
