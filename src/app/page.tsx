@@ -69,7 +69,7 @@ const page = () => {
         <p className="max-w-2xl mx-auto text-gray-700">
           Explore the best study abroad programs, scholarships, and exchange opportunities selected for you.
         </p>
-        {/* Cards or grid of featured opportunities here */}
+        {/* Cards or grid of featured opportunities */}
       </motion.section>
 
       {/* Events*/}
