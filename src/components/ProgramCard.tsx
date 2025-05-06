@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import cuny from "../public/images/cuny.jpg";
 
 type ProgramCardProps = {
   title: string;
@@ -27,7 +28,7 @@ const ProgramCard: React.FC<ProgramCardProps> = ({
       className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl hover:scale-105 transition-transform duration-300"
     >
       <Image
-        src="/images/program.jpg"
+        src="/images/cuny.jpg"
         alt="Program"
         width={400}
         height={250}
