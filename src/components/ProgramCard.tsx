@@ -8,14 +8,14 @@ import { motion } from "framer-motion";
 type ProgramCardProps = {
   title: string;
   country: string;
-  sponsorCollege: string;
+  city: string;
   url: string;
 };
 
 const ProgramCard: React.FC<ProgramCardProps> = ({
   title,
   country,
-  sponsorCollege,
+  city,
   url,
 }) => {
   return (
@@ -36,17 +36,22 @@ const ProgramCard: React.FC<ProgramCardProps> = ({
 
       <div className="p-6 space-y-3">
         <div className="inline-block bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
-          {sponsorCollege}
+          {city}
         </div>
 
         <h3 className="text-2xl font-bold text-gray-900">{title}</h3>
         <p className="text-gray-600">{country}</p>
 
+        {url ? (
         <Link href={url} target="_blank">
-          <button className="mt-4 inline-block bg-blue-600 hover:bg-blue-800 text-white px-5 py-2 rounded-xl transition">
+        <button className="mt-4 inline-block bg-blue-600 hover:bg-blue-800 text-white px-5 py-2 rounded-xl transition">
             Learn More
-          </button>
+        </button>
         </Link>
+        ) : (
+        <p className="mt-4 text-sm text-gray-500">More info coming soon</p>
+        )}
+
       </div>
     </motion.div>
   );
