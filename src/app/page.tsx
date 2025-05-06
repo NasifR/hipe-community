@@ -10,6 +10,9 @@ import { motion } from "framer-motion";
 import ProgramCard from "@/components/ProgramCard";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../lib/firebaseConfig";
+import emailjs from "@emailjs/browser";
+
+emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "");
 
 type Program = {
   id: string;
@@ -21,6 +24,17 @@ type Program = {
 
 const Page = () => {
   const [programs, setPrograms] = useState<Program[]>([]);
+
+  const [isOpen, setIsOpen] = useState(false);
+  // form state
+  const [form, setForm] = useState({
+    email: "",
+    phone: "",
+    name: "",
+    program: "",
+    message: "",
+  });
+  const [sending, setSending] = useState(false);
 
   useEffect(() => {
     const fetchPrograms = async () => {
@@ -43,6 +57,42 @@ const Page = () => {
 
     fetchPrograms();
   }, []);
+
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.email || !form.name) {
+      alert("Name and Email are required.");
+      return;
+    }
+    setSending(true);
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          user_email: form.email,
+          user_name: form.name,
+          user_phone: form.phone,
+          program: form.program,
+          message: form.message,
+        }
+      );
+      alert("Request sent!");
+      setForm({ email: "", phone: "", name: "", program: "", message: "" });
+      closeModal();
+    } catch (err) {
+      console.error(err);
+      alert("Failed to send. Please try again.");
+    } finally {
+      setSending(false);
+    }
+  };
 
   return (
     <div className="bg-white text-black">
@@ -140,16 +190,94 @@ const Page = () => {
       >
         <h2 className="text-3xl font-bold mb-6">Connect with Us</h2>
         <div className="flex flex-col md:flex-row justify-center gap-6">
-          <Button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl">
+          <Button className="bg-blue-600 hover:bg-blue-800 hover:text-white px-6 py-3 rounded-xl">
             Book Advising Session
           </Button>
-          <Button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl">
+          <Button onClick={openModal} className="bg-blue-600 hover:bg-blue-800 hover:text-white px-6 py-3 rounded-xl">
             Request Information
           </Button>
         </div>
       </motion.section>
+
+      {/* Modal */}
+      {isOpen && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-6 w-full max-w-md relative">
+            <button
+              onClick={closeModal}
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+            >
+              ×
+            </button>
+            <h3 className="text-xl font-semibold mb-4">Request Information</h3>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium">Email *</label>
+                <input
+                  name="email"
+                  type="email"
+                  required
+                  value={form.email}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Phone</label>
+                <input
+                  name="phone"
+                  type="tel"
+                  value={form.phone}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Name *</label>
+                <input
+                  name="name"
+                  type="text"
+                  required
+                  value={form.name}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">
+                  Program you are inquiring about
+                </label>
+                <input
+                  name="program"
+                  type="text"
+                  value={form.program}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium">Describe your request</label>
+                <textarea
+                  name="message"
+                  rows={4}
+                  value={form.message}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={sending}
+                className="w-full bg-blue-600 hover:bg-blue-800 text-white py-2 rounded-lg"
+              >
+                {sending ? "Sending…" : "Send Request"}
+              </button>
+            </form>
+          </div>
+    </div>
+  )};
     </div>
   );
-};
+}
 
 export default Page;
