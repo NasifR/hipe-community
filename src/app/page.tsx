@@ -11,6 +11,7 @@ import ProgramCard from "@/components/ProgramCard";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../lib/firebaseConfig";
 import emailjs from "@emailjs/browser";
+import Link from "next/link";
 
 emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "");
 
@@ -116,12 +117,16 @@ const Page = () => {
             Your gateway to global education, experiences, and connections.
           </p>
           <div className="mt-6 flex gap-4 justify-center md:justify-start">
+          <Link href="/signup">
             <Button className="bg-blue-600 hover:bg-blue-800 text-white px-6 py-3 rounded-xl">
               Join the Community
             </Button>
+          </Link>
+            <Link href="/">
             <Button variant="outline" className="px-6 py-3 rounded-xl border-blue-600">
               Learn More
             </Button>
+            </Link>
           </div>
         </motion.div>
 
