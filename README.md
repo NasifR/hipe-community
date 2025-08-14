@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌍 International Education Opportunities Platform
 
-## Getting Started
+A full-stack web platform designed to connect **students**, **faculty**, and **organizations** with international education opportunities such as **study abroad programs, scholarships, internships, and research projects**.
 
-First, run the development server:
+Built with **Next.js**, **MongoDB**, **Tailwind CSS**, and **Firebase**, this platform provides a modern, user-friendly experience while enabling role-based onboarding and personalized access to relevant opportunities.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# 🌐 Live Deployment:
+https://hipe-community.vercel.app/
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🔹 Role-Based Onboarding
+- **Students**: Explore opportunities, save favorites, and customize search filters.
+- **Faculty/Staff**: Share mentorship, research, or program opportunities with students.
+- **Organizations**: Post opportunities and connect with targeted audiences.
 
-## Learn More
+### 🔹 Opportunity Management
+- Post, edit, and manage listings for international opportunities.
+- Search and filter from a database of 200+ opportunities.
+- Save favorite opportunities for quick access.
 
-To learn more about Next.js, take a look at the following resources:
+### 🔹 Modern UI/UX
+- Clean, responsive design with **Tailwind CSS**.
+- **Selectable buttons** for streamlined navigation.
+- Smooth **animations and hover effects** for better interactivity.
+- Mobile-first layout ensuring accessibility on all devices.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠️ Tech Stack
 
-## Deploy on Vercel
+- **Frontend:** [Next.js](https://nextjs.org/) + [Tailwind CSS](https://tailwindcss.com/)
+- **Backend:** [Node.js](https://nodejs.org/) + [MongoDB](https://www.mongodb.com/)
+- **Authentication & Hosting:** [Firebase](https://firebase.google.com/)
+- **Deployment:** [Vercel](hipe-community.vercel.app/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📸 Screenshots
+
+| Onboarding Flow | Opportunity Search | Profile Dashboard |
+|-----------------|--------------------|-------------------|
+| *(Insert Image)* | *(Insert Image)*   | *(Insert Image)*  |
+
+---
+
+## 📌 Roadmap
+
+- [ ] **Forum** – Enable discussion posts and threaded comments.
+- [ ] **Messaging** – Direct communication between users.
+- [ ] **Resource Sharing** – Post and share relevant opportunities & materials.
+- [ ] **Application System** – Apply directly to posted opportunities.
+
+---
+
+## 📂 Getting Started
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/repo-name.git
+
+2. **Navigate to the project folder**
+3. **Install dependencies**:
+   npm install
+
+4. **Run server**
+   npm run dev
