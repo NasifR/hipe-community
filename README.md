@@ -40,9 +40,9 @@ https://hipe-community.vercel.app/
 
 ## 📸 Screenshots
 
-| Onboarding Flow | Opportunity Search | Profile Dashboard |
+| Onboarding Flow | Opportunity Search |     Home Page     |
 |-----------------|--------------------|-------------------|
-| *(Insert Image)* | *(Insert Image)*   | *(Insert Image)*  |
+| *(Insert Image)* | *(Insert Image)*   | ![hipe1](hipe1.PNG)  |
 
 ---
 
