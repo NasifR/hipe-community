@@ -42,7 +42,7 @@ https://hipe-community.vercel.app/
 
 | Onboarding Flow | Opportunity Search |     Home Page     |
 |-----------------|--------------------|-------------------|
-| *(Insert Image)* | *(Insert Image)*   | ![hipe1](hipe1.PNG)  |
+| ![hipe3](hipe3.PNG)  | ![hipe4](hipe4.PNG)   | ![hipe1](hipe1.PNG)  |
 
 ---
 
